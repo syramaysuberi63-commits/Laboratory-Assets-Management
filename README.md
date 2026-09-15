@@ -68,7 +68,8 @@ stateDiagram-v2
 | BR-13 | Row Level Security limits profiles, borrowing requests, maintenance requests, and audit logs by role and ownership. |
 
 ## 7. Audit-Log Screenshot
-<img width="722" height="426" alt="Screenshot 2026-09-15 103556" src="https://github.com/user-attachments/assets/26cdf527-f333-433f-8c02-f7a99ed11c6a" />
+<img width="959" height="482" alt="image" src="https://github.com/user-attachments/assets/01aec831-6676-4e64-bda4-fc18508d8942" />
+
 
 ## 8. Functional Test Results
 
