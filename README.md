@@ -1,112 +1,12 @@
 # AssetFlow — Systems Analysis and Design Lab 4
-Asset borrowing and maintenance tracking system built with Vanilla JS and Supabase.
-
-## Setup
-
-1. Run `supabase/schema.sql` in Supabase SQL Editor.
-2. Create Auth users and add their rows to `profiles` using `supabase/seed.sql`.
-3. Put your project URL and ANON/PUBLISHABLE key in `js/config.js`.
-4. Do NOT put a Supabase service_role key in frontend code.
-5. Deploy this folder to GitHub Pages.
-
-Supabase connection format:
-const SUPABASE_URL = "https://example.supabase.co";
-const SUPABASE_KEY = "";
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 ## 3. Updated ERD and Use Case Diagram
 
 ### Entity Relationship Diagram
-
-```mermaid
-erDiagram
-	AUTH_USERS ||--|| PROFILES : has
-	PROFILES ||--o{ BORROWING_REQUESTS : submits
-	PROFILES ||--o{ MAINTENANCE_REQUESTS : reports
-	PROFILES ||--o{ AUDIT_LOGS : creates
-	EQUIPMENT ||--o{ BORROWING_REQUESTS : requested_for
-	EQUIPMENT ||--o{ MAINTENANCE_REQUESTS : has
-	PROFILES ||--o{ BORROWING_REQUESTS : reviews
-
-	PROFILES {
-		uuid id PK
-		text email
-		text full_name
-		app_role role
-		timestamptz created_at
-	}
-	EQUIPMENT {
-		bigint id PK
-		text asset_code UK
-		text name
-		text category
-		text condition
-		equipment_status status
-		timestamptz created_at
-	}
-	BORROWING_REQUESTS {
-		bigint id PK
-		bigint equipment_id FK
-		uuid requester_id FK
-		uuid reviewed_by FK
-		text purpose
-		timestamptz start_at
-		timestamptz expected_return_at
-		request_status status
-		timestamptz created_at
-	}
-	MAINTENANCE_REQUESTS {
-		bigint id PK
-		bigint equipment_id FK
-		uuid requester_id FK
-		text description
-		maintenance_status status
-		timestamptz created_at
-		timestamptz resolved_at
-	}
-	AUDIT_LOGS {
-		bigint id PK
-		uuid user_id FK
-		text action
-		text module
-		bigint record_id
-		text description
-		timestamptz created_at
-	}
-```
+<img width="455" height="326" alt="Screenshot 2026-09-15 102732" src="https://github.com/user-attachments/assets/22376326-57eb-4447-b736-78ce5da65807" />
 
 ### Use Case Diagram
-
-```mermaid
-flowchart LR
-	Admin([Administrator])
-	Staff([Laboratory Staff])
-	Requester([Requester / Viewer])
-	System[(AssetFlow System)]
-
-	Admin --> A1[Manage users and equipment]
-	Admin --> A2[Approve or reject requests]
-	Admin --> A3[Manage maintenance status]
-	Admin --> A4[View reports and audit logs]
-	Staff --> S1[View equipment]
-	Staff --> S2[Create borrowing transactions]
-	Staff --> S3[Process returns]
-	Staff --> S4[Submit maintenance requests]
-	Staff --> S5[Update permitted records]
-	Requester --> R1[View available equipment]
-	Requester --> R2[Submit borrowing request]
-	System --- A1
-	System --- A2
-	System --- A3
-	System --- A4
-	System --- S1
-	System --- S2
-	System --- S3
-	System --- S4
-	System --- S5
-	System --- R1
-	System --- R2
-```
+<img width="405" height="210" alt="image" src="https://github.com/user-attachments/assets/5c9f1081-7fde-488e-89df-63a189706e55" />
 
 ## 4. Role-Permission Matrix
 
@@ -168,25 +68,7 @@ stateDiagram-v2
 | BR-13 | Row Level Security limits profiles, borrowing requests, maintenance requests, and audit logs by role and ownership. |
 
 ## 7. Audit-Log Screenshot
-
-The audit log is available to an Administrator from **Audit Log** in the application navigation. Capture the screenshot after performing at least one approval, return, maintenance, or equipment action.
-
-The screenshot should show these columns:
-
-| Time | User | Action | Module | Record | Description |
-|---|---|---|---|---|---|
-| Example | Administrator name | UPDATED | Maintenance | request ID | Updated maintenance status |
-
-Screenshot checklist:
-
-- Login using an Administrator account.
-- Open **Audit Log**.
-- Confirm that the action, module, record ID, user, and timestamp are visible.
-- Save the image as `docs/audit-log-screenshot.png` and embed it below before submission:
-
-```markdown
-![Audit log screenshot](docs/audit-log-screenshot.png)
-```
+<img width="722" height="426" alt="Screenshot 2026-09-15 103556" src="https://github.com/user-attachments/assets/26cdf527-f333-433f-8c02-f7a99ed11c6a" />
 
 ## 8. Functional Test Results
 
@@ -204,4 +86,4 @@ Screenshot checklist:
 | TC-10 | Unauthorized role opens admin action | RPC rejects the operation | Pass |
 | TC-11 | Administrator views audit logs | Audit records display with user, module, action, and timestamp | Pass |
 
-Tests were validated through JavaScript syntax checks, editor diagnostics, role-gated UI paths, and Supabase RPC/RLS definitions. Remote Supabase tests require the SQL files to be run in the project SQL Editor first.
+
