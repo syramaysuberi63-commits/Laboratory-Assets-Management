@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680">
+  <rect width="1100" height="680" fill="#ffffff"/>
+  <style>
+    .box { fill: #ffffff; stroke: #9ca3af; stroke-width: 2; }
+    .head { fill: #eef2f7; stroke: #9ca3af; stroke-width: 2; }
+    .title { font: 700 16px Arial, sans-serif; fill: #17212b; }
+    .field { font: 13px Arial, sans-serif; fill: #334155; }
+    .line { stroke: #64748b; stroke-width: 2; fill: none; }
+  </style>
+  <path class="line" d="M230 105 C350 105 430 105 540 105"/>
+  <path class="line" d="M230 205 C320 205 350 205 420 205"/>
+  <path class="line" d="M850 205 C770 205 735 205 680 205"/>
+  <path class="line" d="M350 505 C390 505 420 410 460 330"/>
+  <path class="line" d="M850 410 C760 410 710 390 680 350"/>
+  <path class="line" d="M230 410 C300 410 350 410 420 410"/>
+  <rect class="box" x="30" y="40" width="210" height="210" rx="6"/>
+  <rect class="head" x="30" y="40" width="210" height="40" rx="6"/>
+  <text class="title" x="48" y="66">audit_logs</text>
+  <text class="field" x="48" y="108">id bigint PK</text><text class="field" x="48" y="134">user_id uuid FK</text><text class="field" x="48" y="160">action text</text><text class="field" x="48" y="186">module text</text><text class="field" x="48" y="212">record_id bigint</text><text class="field" x="48" y="238">description text</text>
+  <rect class="box" x="420" y="40" width="230" height="230" rx="6"/>
+  <rect class="head" x="420" y="40" width="230" height="40" rx="6"/>
+  <text class="title" x="438" y="66">profiles</text>
+  <text class="field" x="438" y="108">id uuid PK -> auth.users.id</text><text class="field" x="438" y="134">email text</text><text class="field" x="438" y="160">full_name text</text><text class="field" x="438" y="186">role app_role</text><text class="field" x="438" y="212">created_at timestamptz</text>
+  <rect class="box" x="850" y="40" width="220" height="250" rx="6"/>
+  <rect class="head" x="850" y="40" width="220" height="40" rx="6"/>
+  <text class="title" x="868" y="66">equipment</text>
+  <text class="field" x="868" y="108">id bigint PK</text><text class="field" x="868" y="134">asset_code text UK</text><text class="field" x="868" y="160">name text</text><text class="field" x="868" y="186">category text</text><text class="field" x="868" y="212">condition text</text><text class="field" x="868" y="238">status equipment_status</text><text class="field" x="868" y="264">created_at timestamptz</text>
+  <rect class="box" x="420" y="330" width="260" height="300" rx="6"/>
+  <rect class="head" x="420" y="330" width="260" height="40" rx="6"/>
+  <text class="title" x="438" y="356">borrowing_requests</text>
+  <text class="field" x="438" y="398">id bigint PK</text><text class="field" x="438" y="424">equipment_id bigint FK</text><text class="field" x="438" y="450">requester_id uuid FK</text><text class="field" x="438" y="476">reviewed_by uuid FK</text><text class="field" x="438" y="502">purpose text</text><text class="field" x="438" y="528">start_at timestamptz</text><text class="field" x="438" y="554">expected_return_at timestamptz</text><text class="field" x="438" y="580">status request_status</text><text class="field" x="438" y="606">created_at timestamptz</text>
+  <rect class="box" x="30" y="330" width="320" height="220" rx="6"/>
+  <rect class="head" x="30" y="330" width="320" height="40" rx="6"/>
+  <text class="title" x="48" y="356">maintenance_requests</text>
+  <text class="field" x="48" y="398">id bigint PK</text><text class="field" x="48" y="424">equipment_id bigint FK</text><text class="field" x="48" y="450">requester_id uuid FK</text><text class="field" x="48" y="476">description text</text><text class="field" x="48" y="502">status maintenance_status</text><text class="field" x="48" y="528">resolved_at timestamptz</text>
+  <text class="field" x="790" y="650">Supabase ERD: profiles, equipment, borrowing, maintenance, audit logs</text>
+</svg>

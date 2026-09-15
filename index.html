@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AssetFlow</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <section id="login" class="login">
+      <div class="art">
+        <span></span>
+        <h1>ASSET<br /><b>FLOW</b></h1>
+        <p>Controlled borrowing. Visible accountability.</p>
+      </div>
+      <form id="loginForm">
+        <h2>Sign in</h2>
+        <input id="email" type="email" placeholder="Email" required /><input
+          id="password"
+          type="password"
+          placeholder="Password"
+          required
+        /><button>ENTER WORKPLACE ↗</button
+        ><small></small>
+      </form>
+    </section>
+    <section id="app" class="hidden">
+      <aside>
+        <h2>▣ AssetFlow</h2>
+        <div id="role"></div>
+        <nav id="nav"></nav>
+        <button id="logout">LOG OUT</button>
+      </aside>
+      <main>
+        <header>
+          <div>
+            <small id="kicker">CONTROL CENTER</small>
+            <h1 id="title">Overview</h1>
+          </div>
+          <span id="user"></span>
+        </header>
+        <div id="content"></div>
+      </main>
+    </section>
+    <dialog id="requestModal">
+      <form id="requestForm">
+        <button
+          type="button"
+          class="x"
+          onclick="document.querySelector('#requestModal').close()"
+        >
+          ×
+        </button>
+        <h2>Borrow equipment</h2>
+        <label>Equipment<select id="equipmentSelect"></select></label
+        ><label>Purpose<textarea id="purpose" required></textarea></label
+        ><label>Start<input id="start" type="datetime-local" required /></label
+        ><label
+          >Expected return<input
+            id="end"
+            type="datetime-local"
+            required /></label
+        ><button>SUBMIT ↗</button>
+      </form>
+    </dialog>
+    <dialog id="maintenanceModal">
+      <form id="maintenanceForm">
+        <button
+          type="button"
+          class="x"
+          onclick="document.querySelector('#maintenanceModal').close()"
+        >
+          ×
+        </button>
+        <h2 id="maintenanceModalTitle">Add maintenance</h2>
+        <label
+          >Equipment<select id="maintenanceEquipment" required></select
+        ></label>
+        <label
+          >Issue / description<textarea
+            id="maintenanceDescription"
+            required
+          ></textarea
+        ></label>
+        <button id="maintenanceSubmit" type="submit">ADD MAINTENANCE</button>
+      </form>
+    </dialog>
+    <dialog id="equipmentModal">
+      <form id="equipmentForm">
+        <button
+          type="button"
+          class="x"
+          onclick="document.querySelector('#equipmentModal').close()"
+        >
+          ×
+        </button>
+        <h2>Add equipment</h2>
+        <input id="equipmentId" type="hidden" />
+        <label>Asset code<input id="assetCode" required /></label>
+        <label>Name<input id="equipmentName" required /></label>
+        <label>Category<input id="equipmentCategory" required /></label>
+        <label>Condition<input id="equipmentCondition" value="Good" required /></label>
+        <button id="equipmentSubmit" type="submit">ADD EQUIPMENT</button>
+      </form>
+    </dialog>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
